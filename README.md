@@ -4,3 +4,4 @@ Its includes:
  + Table mode
  + Solve with Newton's method
  + Polynomial
+...
