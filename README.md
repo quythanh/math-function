@@ -1,4 +1,4 @@
-Some helpful math function for me :)
+Some helpful math functions for me :)
 
 Its includes:
  + Table mode
