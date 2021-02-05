@@ -1,5 +1,6 @@
 from functions import formatNumber, abs
 from math import acos, cos
+from os import system
 
 class Polynomial():
     def __init__(self, a, b, c, d, e):
@@ -12,7 +13,7 @@ class Polynomial():
         self.pi = 3.141592653589793
 
     def Show(self):
-        print('─'*50)
+        system('cls')
         if len(self.result) == 1:
             print(f"x = {self.result[0]}")
         else:
@@ -78,10 +79,14 @@ class Polynomial():
 
         solve_m = Polynomial(8, -4*at, -8*ct, 4*at*ct-bt**2, 0) #8m^3 - 4am^2 - 8cm + 4ac - b^2 = 0
         solve_m.Degree_3()
-        m = eval(solve_m.result[0])
+        i = 0
+        m = eval(solve_m.result[i])
+        while (2*m - at) == 0 and i < len(solve_m.result):
+            i += 1
+            m = eval(solve_m.result[i])
 
-        pre_result_1 = Polynomial(1, -(2*m-at)**0.5, m + b/(2*(2*m-at)**0.5), 0, 0)
-        pre_result_2 = Polynomial(1, (2*m-at)**0.5, m - b/(2*(2*m-at)**0.5), 0, 0)
+        pre_result_1 = Polynomial(1, -(2*m-at)**0.5, m + bt/(2*(2*m-at)**0.5), 0, 0)
+        pre_result_2 = Polynomial(1, (2*m-at)**0.5, m - bt/(2*(2*m-at)**0.5), 0, 0)
 
         list_pre_results = []
         for j in [pre_result_1, pre_result_2]:
