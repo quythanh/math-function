@@ -1,7 +1,7 @@
 from random import uniform
 from datetime import datetime
 from os import system
-from func import *
+from functions import *
 
 class Handle():
     def __init__(self, equation, x):

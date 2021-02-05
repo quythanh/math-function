@@ -1,4 +1,5 @@
-from func import formatNumber
+from functions import formatNumber, abs
+from math import acos, cos
 
 class Polynomial():
     def __init__(self, a, b, c, d, e):
@@ -8,8 +9,10 @@ class Polynomial():
         self.d = d
         self.e = e
         self.result = []
+        self.pi = 3.141592653589793
 
     def Show(self):
+        print('─'*50)
         if len(self.result) == 1:
             print(f"x = {self.result[0]}")
         else:
@@ -38,6 +41,33 @@ class Polynomial():
             x2 = real + " - " + imagine + "i"
             self.result.append(x1)
             self.result.append(x2)
+        self.Show()
+
+    def Degree_3(self):
+        delta = self.b**2 - 3*self.a*self.c
+        k = (9*self.a*self.b*self.c-2*self.b**3-27*self.a**2*self.d)/(2*(abs(delta**3))**0.5)
+        if delta > 0:
+            if abs(k) < 1:
+                x1 = str(formatNumber(round((2*delta**0.5*cos(acos(k)/3)-self.b)/(3*self.a), 15)))
+                x2 = str(formatNumber(round((2*delta**0.5*cos((acos(k)-2*self.pi)/3)-self.b)/(3*self.a), 15)))
+                x3 = str(formatNumber(round((2*delta**0.5*cos((acos(k)+2*self.pi)/3)-self.b)/(3*self.a), 15)))
+                self.result.append(x1)
+                self.result.append(x2)
+                self.result.append(x3)
+            elif abs(k) == 1:
+                x1 = str(formatNumber(round((2*delta**0.5-self.b)/(3*self.a), 15)))
+                x2 = str(formatNumber(round((-delta**0.5-self.b)/(3*self.a), 15)))
+                self.result.append(x1)
+                self.result.append(x2)
+            else:
+                x = str(formatNumber(round((delta**0.5*abs(k)/(3*self.a*k))*((abs(k)+(k*k-1)**0.5)**(1/3)+(abs(k)-(k*k-1)**0.5)**(1/3))-self.b/(3*self.a), 15)))
+                self.result.append(x)
+        elif delta == 0:
+            x = str(formatNumber(round((-self.b+(self.b**3-27*self.a**2*self.d)**(1/3))/(3*self.a), 15)))
+            self.result.append(x)
+        else:
+            x = str(formatNumber(round((abs(delta)**0.5/(3*self.a))*((k+(k*k+1)**0.5)**(1/3)-((k*k+1)**0.5-k)**(1/3))-self.b/(3*self.a), 15)))
+            self.result.append(x)
         self.Show()
 
 if __name__ == "__main__":

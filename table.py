@@ -1,4 +1,4 @@
-from func import *
+from functions import *
 
 def Table(equation, start, end, step):
     if equation != '':
