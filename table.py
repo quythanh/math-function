@@ -7,7 +7,7 @@ def Table(equation, start, end, step):
         i = start - step
         while i <= (end-step):
             i += step
-            lst.append(formatNumber(round(Calc(eqa, i),12)))
+            lst.append(strfNumber(round(Calc(eqa, i),12)))
         return lst
     else:
         lst = []
@@ -20,9 +20,10 @@ def Table(equation, start, end, step):
 def makeString(Obj):
     if Obj == '':
         result = ''
-    elif len(str(Obj)) <= 25:
-        result = str(Obj).replace('e+', ' x 10^').replace('e', ' x 10^')
+    elif len(Obj) <= 25:
+        result = Obj.replace('e+', ' x 10^').replace('e', ' x 10^')
     else:
+        Obj = eval(Obj)
         if Obj >= 10**25:
             ilg = len(str(int(Obj))) - 1
             result = str(round(Obj/(10**ilg), (17-len(str(ilg))))) + ' x 10^' + str(ilg)

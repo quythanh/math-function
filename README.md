@@ -1,7 +1,9 @@
-Some helpful math functions for me :)
+# math-function
 
-Its includes:
+Some helpful functions for me :)
+
+It includes:
  + Table mode
- + Solve with Newton's method
+ + Solve equation with Newton's method
  + Polynomial
  + etc...

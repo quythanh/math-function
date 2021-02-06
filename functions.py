@@ -10,8 +10,8 @@ def gcd(a, b):
 def lcm(a, b):
     return abs(a*b)/gcd(a, b)
 
-def formatNumber(n):
-    return int(n) if (n/1).is_integer() else n
+def strfNumber(n):
+    return str(int(n)) if (n/1).is_integer() else str(n)
 
 def Derivative(equation, value):
     my_symbols = {'x': Symbol('x', real=True)}

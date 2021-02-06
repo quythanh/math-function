@@ -21,23 +21,23 @@ class Polynomial():
                 print(f"x{i+1} = {self.result[i]}")
 
     def Degree_1(self):
-        x = str(formatNumber(round(-self.b/self.a, 14)))
+        x = strfNumber(round(-self.b/self.a, 14))
         self.result.append(x)
         self.Show()
 
     def Degree_2(self):
         delta = self.b**2 - 4*self.a*self.c
         if delta == 0:
-            x = str(formatNumber(round(-self.b/(2*self.a)), 14))
+            x = strfNumber(round(-self.b/(2*self.a)), 14)
             self.result.append(x)
         elif delta > 0:
-            x1 = str(formatNumber(round((-self.b+(delta)**(1/2))/(2*self.a), 14)))
-            x2 = str(formatNumber(round((-self.b-(delta)**(1/2))/(2*self.a), 14)))
+            x1 = strfNumber(round((-self.b+(delta)**(1/2))/(2*self.a), 14))
+            x2 = strfNumber(round((-self.b-(delta)**(1/2))/(2*self.a), 14))
             self.result.append(x1)
             self.result.append(x2)
         else:
-            real = str(formatNumber(round(-self.b/(2*self.a), 14)))
-            imagine = str(formatNumber(round((-delta)**(1/2)/(2*a), 14)))
+            real = strfNumber(round(-self.b/(2*self.a), 14))
+            imagine = strfNumber(round((-delta)**(1/2)/(2*a), 14))
             x1 = real + " + " + imagine + "i"
             x2 = real + " - " + imagine + "i"
             self.result.append(x1)
@@ -49,25 +49,25 @@ class Polynomial():
         k = (9*self.a*self.b*self.c-2*self.b**3-27*self.a**2*self.d)/(2*(abs(delta**3))**0.5)
         if delta > 0:
             if abs(k) < 1:
-                x1 = str(formatNumber(round((2*delta**0.5*cos(acos(k)/3)-self.b)/(3*self.a), 14)))
-                x2 = str(formatNumber(round((2*delta**0.5*cos((acos(k)-2*self.pi)/3)-self.b)/(3*self.a), 14)))
-                x3 = str(formatNumber(round((2*delta**0.5*cos((acos(k)+2*self.pi)/3)-self.b)/(3*self.a), 14)))
+                x1 = strfNumber(round((2*delta**0.5*cos(acos(k)/3)-self.b)/(3*self.a), 14))
+                x2 = strfNumber(round((2*delta**0.5*cos((acos(k)-2*self.pi)/3)-self.b)/(3*self.a), 14))
+                x3 = strfNumber(round((2*delta**0.5*cos((acos(k)+2*self.pi)/3)-self.b)/(3*self.a), 14))
                 self.result.append(x1)
                 self.result.append(x2)
                 self.result.append(x3)
             elif abs(k) == 1:
-                x1 = str(formatNumber(round((2*delta**0.5-self.b)/(3*self.a), 14)))
-                x2 = str(formatNumber(round((-delta**0.5-self.b)/(3*self.a), 14)))
+                x1 = strfNumber(round((2*delta**0.5-self.b)/(3*self.a), 14))
+                x2 = strfNumber(round((-delta**0.5-self.b)/(3*self.a), 14))
                 self.result.append(x1)
                 self.result.append(x2)
             else:
-                x = str(formatNumber(round((delta**0.5*abs(k)/(3*self.a*k))*((abs(k)+(k*k-1)**0.5)**(1/3)+(abs(k)-(k*k-1)**0.5)**(1/3))-self.b/(3*self.a), 14)))
+                x = strfNumber(round((delta**0.5*abs(k)/(3*self.a*k))*((abs(k)+(k*k-1)**0.5)**(1/3)+(abs(k)-(k*k-1)**0.5)**(1/3))-self.b/(3*self.a), 14))
                 self.result.append(x)
         elif delta == 0:
-            x = str(formatNumber(round((-self.b+(self.b**3-27*self.a**2*self.d)**(1/3))/(3*self.a), 14)))
+            x = strfNumber(round((-self.b+(self.b**3-27*self.a**2*self.d)**(1/3))/(3*self.a), 14))
             self.result.append(x)
         else:
-            x = str(formatNumber(round((abs(delta)**0.5/(3*self.a))*((k+(k*k+1)**0.5)**(1/3)-((k*k+1)**0.5-k)**(1/3))-self.b/(3*self.a), 14)))
+            x = strfNumber(round((abs(delta)**0.5/(3*self.a))*((k+(k*k+1)**0.5)**(1/3)-((k*k+1)**0.5-k)**(1/3))-self.b/(3*self.a), 14))
             self.result.append(x)
         self.Show()
 
@@ -96,11 +96,11 @@ class Polynomial():
 
         for i in list_t:
             if 'i' not in i:
-                x = str(formatNumber(round(eval(i) - self.b/(4*self.a), 14)))
+                x = strfNumber(round(eval(i) - self.b/(4*self.a), 14))
                 self.result.append(x)
             else:
                 classify = i.split(' ')
-                classify[0] = str(formatNumber(round(eval(classify[0]) - self.b/(4*self.a), 14)))
+                classify[0] = strfNumber(round(eval(classify[0]) - self.b/(4*self.a), 14))
                 x = ''.join(classify)
                 self.result.append(x)
         self.Show()

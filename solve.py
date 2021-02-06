@@ -50,11 +50,11 @@ class Handle():
                     self.list_sol.append(self.x)
                     print(self.ori_equa)
                     print('x = \t', formatNumber(self.x))
-                    print('L - R = ', str(formatNumber(round(Calc(self.equation, self.x),14))).replace('e+', ' x 10^').replace('e', ' x 10^'))
+                    print('L - R = ', strfNumber(round(Calc(self.equation, self.x),14)).replace('e+', ' x 10^').replace('e', ' x 10^'))
                     self.NEq()
                 elif abs(Calc(self.equation, self.x)) < 10**-5 and abs(self.x) < 10**5:
                     print('x = \t', formatNumber(self.x))
-                    print('L - R = ', str(formatNumber(Calc(self.equation, self.x))).replace('e+', ' x 10^').replace('e', ' x 10^'))
+                    print('L - R = ', strfNumber(Calc(self.equation, self.x)).replace('e+', ' x 10^').replace('e', ' x 10^'))
                     c = input('Continue? (Y/N):\t')
                     if c.lower() == 'y':
                         system('cls')
@@ -73,7 +73,7 @@ class Handle():
             self.list_sol.append(self.x)
             print(self.ori_equa)
             print('x = \t', formatNumber(self.x))
-            print('L - R = ', str(formatNumber(Calc(self.equation, self.x))).replace('e+', ' x 10^').replace('e', ' x 10^'))
+            print('L - R = ', strfNumber(Calc(self.equation, self.x)).replace('e+', ' x 10^').replace('e', ' x 10^'))
             self.NEq()
 
     def NEq(self):
