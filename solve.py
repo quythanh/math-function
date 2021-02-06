@@ -41,7 +41,7 @@ class Handle():
             times += 1
             derivative = Derivative(self.equation, self.x)
             if derivative != 0:
-                self.x = round(self.x - Calc(self.equation, self.x)/derivative, 15)
+                self.x = round(self.x - Calc(self.equation, self.x)/derivative, 14)
             else:
                 self.x += uniform(-3.0,3.0)
             if times == 20:

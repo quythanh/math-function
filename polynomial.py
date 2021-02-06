@@ -73,35 +73,35 @@ class Polynomial():
 
     def Degree_4(self):
         # t^4 + at^2 + bt + c = 0
-        at = (-3*self.b**2+8*self.a*self.c)/(8*self.a**2)
-        bt = (2*self.b**3-8*self.a*self.b*self.c+16*self.a**2*self.d)/(16*self.a**3)
-        ct = (-3*self.b**4+16*self.a*self.b**2*self.c-64*self.a**2*self.b*self.d+256*self.a**3*self.e)/(256*self.a**4)
+        a = (-3*self.b**2+8*self.a*self.c)/(8*self.a**2)
+        b = (2*self.b**3-8*self.a*self.b*self.c+16*self.a**2*self.d)/(16*self.a**3)
+        c = (-3*self.b**4+16*self.a*self.b**2*self.c-64*self.a**2*self.b*self.d+256*self.a**3*self.e)/(256*self.a**4)
 
-        solve_m = Polynomial(8, -4*at, -8*ct, 4*at*ct-bt**2, 0) #8m^3 - 4am^2 - 8cm + 4ac - b^2 = 0
+        solve_m = Polynomial(8, -4*a, -8*c, 4*a*c-b**2, 0) #8m^3 - 4am^2 - 8cm + 4ac - b^2 = 0
         solve_m.Degree_3()
         i = 0
         m = eval(solve_m.result[i])
-        while (2*m - at) == 0 and i < len(solve_m.result):
+        while (2*m - a) == 0 and i < len(solve_m.result):
             i += 1
             m = eval(solve_m.result[i])
 
-        pre_result_1 = Polynomial(1, -(2*m-at)**0.5, m + bt/(2*(2*m-at)**0.5), 0, 0)
-        pre_result_2 = Polynomial(1, (2*m-at)**0.5, m - bt/(2*(2*m-at)**0.5), 0, 0)
+        list_t1 = Polynomial(1, -(2*m-a)**0.5, m + b/(2*(2*m-a)**0.5), 0, 0)
+        list_t2 = Polynomial(1, (2*m-a)**0.5, m - b/(2*(2*m-a)**0.5), 0, 0)
 
-        list_pre_results = []
-        for j in [pre_result_1, pre_result_2]:
+        list_t = []
+        for j in [list_t1, list_t2]:
             j.Degree_2()
             for i in j.result:
-                list_pre_results.append(i)
+                list_t.append(i)
 
-        for i in list_pre_results:
+        for i in list_t:
             if 'i' not in i:
                 x = str(formatNumber(round(eval(i) - self.b/(4*self.a), 14)))
                 self.result.append(x)
             else:
                 classify = i.split(' ')
                 classify[0] = str(formatNumber(round(eval(classify[0]) - self.b/(4*self.a), 14)))
-                x = classify[0] + ' ' + classify[1] + ' ' + classify[2]
+                x = ''.join(classify)
                 self.result.append(x)
         self.Show()
 
