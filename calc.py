@@ -1,4 +1,4 @@
-from functions import *
+from functions import ReplaceSymbol, Calc
 
 print('Calculator')
 fx = ReplaceSymbol(input(''))
